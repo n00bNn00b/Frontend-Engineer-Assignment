@@ -109,6 +109,6 @@ const [selectedIndex, setSelectedIndex] = useState();
 ```
 
 4. There is no unique key for the SingleListItem component.
-5. ` Warning: Cannot update a component ( ``WrappedListComponent`` ) while rendering a different component (``WrappedSingleListItem``). To locate the bad setState() call inside ``WrappedSingleListItem ` ` - This error occured in ``WrappedListComponent ` because of the event handler. When the event handler function was called there was no arrow function. To avoid this warning using arrow function will fix the issue.
+5. ` Warning: Cannot update a component ( ``WrappedListComponent`` ) while rendering a different component (``WrappedSingleListItem``). To locate the bad setState() call inside ``WrappedSingleListItem ` - This error occured in ``WrappedListComponent ` because of the event handler. When the event handler function was called there was no arrow function. To avoid this warning using arrow function will fix the issue.
    {()=>onClickHandler(index}
 6. isSelected={selectedIndex}- if we send isSelected prop as this it will send a number and the application will throw an error because it requires boolean value not the numeric value.
