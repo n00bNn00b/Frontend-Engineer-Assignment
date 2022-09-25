@@ -3,6 +3,8 @@
 In our daily React coding life we face many problems, create bugs unintentionally. We solve them step by step by watching the errors and warnings and fix the bugs.
 Here is an example React code which has some bugs and need to fix them.
 
+# Problem
+
 ```javascript
 import React, { useState, useEffect, memo } from "react";
 import PropTypes from "prop-types";
