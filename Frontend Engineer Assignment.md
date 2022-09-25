@@ -246,3 +246,13 @@ export default function App() {
   );
 }
 ```
+
+## Screenshots
+
+### OFF
+
+![App Screenshot](https://github.com/n00bNn00b/Frontend-Engineer-Assignment/blob/main/Off.PNG?text=OFF)
+
+### ON
+
+![App Screenshot](https://github.com/n00bNn00b/Frontend-Engineer-Assignment/blob/main/On.PNG?text=ON)
