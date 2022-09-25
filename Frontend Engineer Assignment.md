@@ -70,3 +70,18 @@ const List = memo(WrappedListComponent);
 
 export default List;
 ```
+
+## Overview
+
+On the above Code We have some bugs and need to fix them.
+At first glance let us discuss about the `List` component.
+
+1. Explain what the simple `List` component does.
+
+The List component receives a prop from the main component as a variable named items which is in an array of objects. Inside the component it has a set state function along with an initial state of selectedIndex. Inside of the useEffect hook its state is set as null and hook's dependency is the items prop which is received from the Main or App.js. There is an event handler function which has a parameter of index and inside of this function setState function's parameter is index which will be used in another component.
+
+After that it has an unordered list and inside it items are mapped and sent its objects inside of the SingleListItem component. It is also checked if the items prop's property type is an array of object or not and the object of text is checked that it is required.
+
+It has also default property as null.
+
+In shortly List component receives items as a prop which is an array of objects and sends the objects and the click handler functions as props to SingleLisItem component.
