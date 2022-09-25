@@ -151,7 +151,8 @@ const WrappedSingleListItem = ({ index, isSelected, onClickHandler, text }) => {
     <li
       style={{
         backgroundColor: isSelected ? "green" : "red",
-        margin: "20px",
+        margin: "auto",
+        marginTop: "5px",
         padding: "10px",
         width: "100px",
         borderRadius: "10px",
