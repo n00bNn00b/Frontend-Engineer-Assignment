@@ -122,4 +122,100 @@ const [selectedIndex, setSelectedIndex] = useState();
 </li>
 ```
 
-6. isSelected={selectedIndex}- if we send isSelected prop as this it will send a number and the application will throw an error because it requires boolean value not the numeric value.
+6. In List component we see `isSelected={selectedIndex}`- if we send isSelected prop as this, it will send a number because selectedIndex is a number and the application will throw an error because it requires boolean value not the numeric value. Instead I have come through a solution `if the selectedIndex is even number, it will be true and if the selectedIndex is odd number it will be false`.
+   The solution is like:
+
+```javascript
+<SingleListItem
+  key={index}
+  onClickHandler={() => handleClick(item.index)}
+  text={item.text}
+  index={item.index}
+  isSelected={selectedIndex % 2 === 0 ? true : false}
+/>
+```
+
+## The Whole Solution and modification with styles
+
+3. Please fix, optimize, and/or modify the component as much as you think is necessary.
+
+### Solution
+
+```javascript
+import React, { useState, useEffect, memo } from "react";
+import PropTypes from "prop-types";
+
+// Single List Item
+const WrappedSingleListItem = ({ index, isSelected, onClickHandler, text }) => {
+  return (
+    <li
+      style={{
+        backgroundColor: isSelected ? "green" : "red",
+        margin: "20px",
+        padding: "10px",
+        width: "100px",
+        borderRadius: "10px",
+        cursor: "pointer",
+        color: "white",
+        textAlign: "center",
+      }}
+      onClick={() => onClickHandler(index)}
+    >
+      {text}
+    </li>
+  );
+};
+
+WrappedSingleListItem.propTypes = {
+  index: PropTypes.number,
+  isSelected: PropTypes.bool,
+  onClickHandler: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+const SingleListItem = memo(WrappedSingleListItem);
+
+// List Component
+const WrappedListComponent = ({ items }) => {
+  const [selectedIndex, setSelectedIndex] = useState();
+
+  useEffect(() => {
+    setSelectedIndex(null);
+  }, [items]);
+
+  const handleClick = (index) => {
+    setSelectedIndex(index);
+  };
+  // console.log(selectedIndex);
+
+  return (
+    <ul style={{ textAlign: "left" }}>
+      {items.map((item, index) => (
+        <SingleListItem
+          key={index}
+          onClickHandler={() => handleClick(item.index)}
+          text={item.text}
+          index={item.index}
+          isSelected={selectedIndex % 2 === 0 ? true : false}
+        />
+      ))}
+    </ul>
+  );
+};
+
+WrappedListComponent.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+    })
+  ),
+};
+
+WrappedListComponent.defaultProps = {
+  items: null,
+};
+
+const List = memo(WrappedListComponent);
+
+export default List;
+```
