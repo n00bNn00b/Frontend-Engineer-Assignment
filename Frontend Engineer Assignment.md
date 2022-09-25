@@ -90,7 +90,7 @@ In shortly List component receives items as a prop which is an array of objects 
 
 ## Problems / Warnings of the above Code
 
-2. # What problems / warnings are there with code?
+2.  What problems / warnings are there with code?
 
 ###
 
@@ -218,4 +218,30 @@ WrappedListComponent.defaultProps = {
 const List = memo(WrappedListComponent);
 
 export default List;
+```
+
+And I used `items` as an array of objects in `App.js`. Then I have passed the array as props to the `List` component.
+
+```javascript
+import List from "./List";
+
+export default function App() {
+  const items = [
+    {
+      index: 1,
+      text: "ON",
+    },
+    {
+      index: 2,
+      text: "OFF",
+    },
+  ];
+  return (
+    <div>
+      <h1>Prop Types Bug Fixing</h1>
+      {/* <List items={items} /> */}
+      <List items={items} />
+    </div>
+  );
+}
 ```
